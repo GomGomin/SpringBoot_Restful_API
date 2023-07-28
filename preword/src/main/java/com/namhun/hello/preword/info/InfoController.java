@@ -20,7 +20,7 @@ public class InfoController {
 
     @GetMapping("/info2")
     public String customJson() {
-        JsonO
+        new JsonObject();
         return project;
     }
 }
