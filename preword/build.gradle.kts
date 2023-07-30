@@ -30,7 +30,9 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1")
-	implementation("com.google.code.gson', name: 'gson', version: '2.8.5")
+
+	//gson
+	implementation ("com.google.code.gson:gson:2.9.0")
 
 }
 
