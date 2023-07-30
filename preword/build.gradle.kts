@@ -31,9 +31,12 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1")
 
-	//gson
+	// gson
 	implementation ("com.google.code.gson:gson:2.9.0")
 
+	// slf4j & logback
+	implementation("org.slf4j:jcl-over-slf4j")
+	implementation("ch.qos.logback:logback-classic")
 }
 
 tasks.withType<Test> {
