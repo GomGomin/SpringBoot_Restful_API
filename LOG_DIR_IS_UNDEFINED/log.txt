@@ -1,0 +1,14 @@
+[INFO ] 23:50:06.280 c.n.hello.preword.PrewordApplication - Starting PrewordApplication using Java 11.0.19 on DESKTOP-U2VSMNL with PID 24408 (C:\Users\user\Desktop\Spring_study\SpringBoot_Restful_API\preword\build\classes\java\main started by user in C:\Users\user\Desktop\Spring_study\SpringBoot_Restful_API)
+[INFO ] 23:50:06.280 c.n.hello.preword.PrewordApplication - No active profile set, falling back to 1 default profile: "default"
+[WARN ] 23:50:07.062 o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.namhun.hello.preword]' package. Please check your configuration.
+[INFO ] 23:50:07.181 o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 23:50:07.183 o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 23:50:07.184 o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 23:50:07.184 o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+[INFO ] 23:50:07.247 o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 23:50:07.247 o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 960 ms
+[INFO ] 23:50:07.539 o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 23:50:07.549 o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 23:50:07.557 o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 23:50:07.612 c.n.hello.preword.PrewordApplication - Started PrewordApplication in 1.421 seconds (JVM running for 1317.889)
+[INFO ] 23:50:07.616 o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
