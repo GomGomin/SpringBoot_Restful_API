@@ -7,14 +7,14 @@ import com.namhun.hello.preword.info.model.InfoService;
 import com.namhun.hello.preword.info.model.Project;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @Slf4j
+@RequestMapping("info")
 public class InfoController {
 
     private InfoService infoService;
@@ -24,7 +24,8 @@ public class InfoController {
         this.infoService = infoService; // 생성자를 주입
     }
 
-    @GetMapping("/info")
+
+    @GetMapping("project")
     public Object projectInfo() {
         log.debug("/info start");
         Project project = infoService.getProjectInfo();
@@ -32,7 +33,7 @@ public class InfoController {
         return project;
     }
 
-    @GetMapping("/info2")
+    @GetMapping("custom")
     public String customJson() {
         JsonObject jsonObject = new JsonObject();
 
@@ -59,11 +60,25 @@ public class InfoController {
         return jsonObject.toString();
     }
 
-    @GetMapping("/cityList")
+    @GetMapping("cityList")
     public Object cityList() {
         log.debug("/cityList start");
         List<City> cityList = infoService.getCityList();
         return cityList;
     }
 
+//    @GetMapping("cityListByCode/{countryCode}/{population}")
+//    public Object cityByCountryCode(@PathVariable("countryCode") String ctCode, @PathVariable("population") int population){
+//        log.debug("countryCode ={}, population {}", ctCode,population);
+//        List<City> cityList = infoService.findCityByCodeAndPopulation(ctCode, population);
+//        return cityList;
+//    }
+
+    @GetMapping("cityListByCode")
+    public Object cityByCountryCode(@RequestParam("countryCode") String ctCode,
+                                    @RequestParam(value="population", required = false, defaultValue = "0") int population) {
+        log.debug("countryCode = {}, population = {}", ctCode, population);
+        List<City> cityList = infoService.findCityByCodeAndPopulation(ctCode, population);
+        return cityList;
+    }
 }
