@@ -2,29 +2,33 @@ package com.namhun.hello.preword.info;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.namhun.hello.preword.info.model.City;
+import com.namhun.hello.preword.info.model.InfoService;
 import com.namhun.hello.preword.info.model.Project;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @Slf4j
 public class InfoController {
 
+    private InfoService infoService;
+
+    @Autowired // 스프링 4.3 버전 이상에서는 생략 가능, BeanFactory에서 InfoService를 찾는다
+    public InfoController(InfoService infoService) {
+        this.infoService = infoService; // 생성자를 주입
+    }
+
     @GetMapping("/info")
-    public Project projectInfo() {
+    public Object projectInfo() {
         log.debug("/info start");
+        Project project = infoService.getProjectInfo();
 
-        Project project = new Project();
-        project.projectName = "test";
-        project.createadDate = new Date();
-        project.author = "namhun";
-
-        String version = org.springframework.core.SpringVersion.getVersion();
-
-        log.info("retrun {}" , project.toString());
         return project;
     }
 
@@ -54,4 +58,12 @@ public class InfoController {
         //문자열로 출력
         return jsonObject.toString();
     }
+
+    @GetMapping("/cityList")
+    public Object cityList() {
+        log.debug("/cityList start");
+        List<City> cityList = infoService.getCityList();
+        return cityList;
+    }
+
 }
