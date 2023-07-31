@@ -7,6 +7,8 @@ import com.namhun.hello.preword.info.model.InfoService;
 import com.namhun.hello.preword.info.model.Project;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -80,5 +82,58 @@ public class InfoController {
         log.debug("countryCode = {}, population = {}", ctCode, population);
         List<City> cityList = infoService.findCityByCodeAndPopulation(ctCode, population);
         return cityList;
+    }
+
+//    @GetMapping("cityAdd/{name}/{countryCode}/{district}/{population}")
+//    public Object cityAdd(@PathVariable(value="name") String name
+//            , @PathVariable(value="countryCode") String ctCode
+//            , @PathVariable(value="district") String district
+//            , @PathVariable(value="population") int population) {
+//
+//        log.debug("name = {}, ctCode = {}, district = {}, population ={}", name, ctCode, district, population);
+//
+//        return "ok";
+//    }
+
+//    @GetMapping("cityAdd")
+//    public Object cityAdd(@RequestParam(value="name", required=true) String name
+//            , @RequestParam(value="countryCode", required=true) String ctCode
+//            , @RequestParam(value="district", required=true) String district
+//            , @RequestParam(value="population", required = false, defaultValue = "0") int population) {
+//
+//        log.debug("name = {}, ctCode = {}, district = {}, population ={}", name, ctCode, district, population);
+//
+//        return "ok";
+//    }
+//
+//    @GetMapping(value = "cityAdd")
+//    public Object cityAdd(City city){
+//        log.debug("city = {}", city.toString());
+//        return "ok";
+//    }
+
+//    @PostMapping("cityAdd")
+//    public ResponseEntity<Void> cityAdd(@RequestBody City city) {
+//        log.debug("city = {}", city.toString());
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
+//    @PostMapping(value="cityAdd")
+//    public ResponseEntity<String> cityAdd(String name, String countryCode, String district, Integer population) {
+//        log.debug("name = {}, ctCode = {}, district = {}, population ={}", name, countryCode, district, population);
+//        return new ResponseEntity<>("", HttpStatus.OK);
+//    }
+
+    @PostMapping(value="cityAdd")
+    public ResponseEntity<String> cityAdd(@RequestBody City city) {
+        try {
+            log.debug("city = {}", city.toString());
+
+            log.debug(city.getId().toString());
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+        return new ResponseEntity<>("", HttpStatus.OK);
     }
 }
